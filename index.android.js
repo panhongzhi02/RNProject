@@ -12,7 +12,17 @@ import {
   View
 } from 'react-native';
 
+import JPushModule from 'jpush-react-native';
+
 export default class RNProject extends Component {
+
+  componentDidMount(){
+    JPushModule.addReceiveNotificationListener((map) => {
+            console.log("alertContent: " + map.alertContent);
+            console.log("extras: " + map.extras);
+        });
+  }
+
   render() {
     return (
       <View style={styles.container}>
